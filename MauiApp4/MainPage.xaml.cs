@@ -21,14 +21,29 @@ namespace MauiApp4
             CalculateTip();
         }
 
-        private void Tip15Button_Clicked(object sender, EventArgs e)
+        private void Tip10Button_Clicked(object sender, EventArgs e)
         {
-            TipSlider.Value = 15;
+            TipSlider.Value = 10;
         }
 
-        private void Tip20Button_Clicked(object sender, EventArgs e)
+        private void Tip25Button_Clicked(object sender, EventArgs e)
         {
-            TipSlider.Value = 20;
+            TipSlider.Value = 25;
+        }
+
+        private void Tip35Button_Clicked(object sender, EventArgs e)
+        {
+            TipSlider.Value = 35;
+        }
+
+        private void Tip50Button_Clicked(object sender, EventArgs e)
+        {
+            TipSlider.Value = 50;
+        }
+
+        private void Tip75Button_Clicked(object sender, EventArgs e)
+        {
+            TipSlider.Value = 75;
         }
 
         private void CalculateTip()

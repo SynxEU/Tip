@@ -39,23 +39,23 @@
 
                 <Button
                     Text="10%"
-                    Clicked="Tip15Button_Clicked" />
+                    Clicked="Tip10Button_Clicked" />
 
                 <Button
                     Text="25%"
-                    Clicked="Tip15Button_Clicked" />
+                    Clicked="Tip25Button_Clicked" />
 
                 <Button
                     Text="35%"
-                    Clicked="Tip20Button_Clicked" />
+                    Clicked="Tip35Button_Clicked" />
                 
                 <Button
                     Text="50%"
-                    Clicked="Tip15Button_Clicked" />
+                    Clicked="Tip50Button_Clicked" />
 
                 <Button
                     Text="75%"
-                    Clicked="Tip20Button_Clicked" />    
+                    Clicked="Tip75Button_Clicked" />    
 
             </HorizontalStackLayout>
 
