@@ -43,7 +43,7 @@ namespace MauiApp4
             if (!double.TryParse(
                     AmountEntry.Text,
                     NumberStyles.Any,
-                    CultureInfo.CurrentCulture,
+                    _danishCulture,
                     out double amount))
             {
                 TryUpdateLabels(0.0, 0.0);
@@ -54,26 +54,6 @@ namespace MauiApp4
             double total = amount + tip;
 
             TryUpdateLabels(tip, total);
-        }
-
-        private bool TryCalculateTotal(out double total)
-        {
-            total = 0;
-
-            if (!double.TryParse(
-                    AmountEntry.Text,
-                    NumberStyles.Any,
-                    CultureInfo.CurrentCulture,
-                    out double amount))
-            {
-                return false;
-            }
-
-            double tip = amount * (TipSlider.Value / 100);
-
-            total = amount + tip;
-
-            return true;
         }
     }
 }
