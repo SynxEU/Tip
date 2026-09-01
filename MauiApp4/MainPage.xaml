@@ -4,94 +4,310 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MauiApp4.MainPage"
-    Title="Tip Calculator">
+    Title="Tip Calculator"
+    BackgroundColor="#F4F1EA">
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30"
-            Spacing="20">
+            Padding="24,35,24,30"
+            Spacing="18"
+            HorizontalOptions="Center">
 
-            <Entry
-                x:Name="AmountEntry"
-                Placeholder="Enter Amount"
-                Keyboard="Numeric"
-                TextChanged="AmountEntry_TextChanged" />
-
-            <Label
-                Text="Tip Percentage:" />
-
-            <Slider
-                x:Name="TipSlider"
-                Minimum="0"
-                Maximum="100"
-                Value="15"
-                ValueChanged="TipSlider_ValueChanged" />
-
-            <Label
-                x:Name="TipPercentageLabel"
-                Text="15%"
-                HorizontalOptions="Center" />
-
-
-            <HorizontalStackLayout
+            <Border
+                BackgroundColor="#FFFFFF"
+                StrokeThickness="0"
+                Padding="22"
+                StrokeShape="RoundRectangle 20"
                 HorizontalOptions="Center"
-                Spacing="10">
+                WidthRequest="300"
+                MaximumWidthRequest="500">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label
+                        Text="BILL AMOUNT"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#9EA7AD" />
+
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="10">
+
+                        <Entry
+                            x:Name="AmountEntry"
+                            Grid.Column="0"
+                            Placeholder="Enter amount"
+                            PlaceholderColor="#9EA7AD"
+                            FontSize="24"
+                            Keyboard="Numeric"
+                            TextColor="#3D3A37"
+                            BackgroundColor="Transparent"
+                            TextChanged="AmountEntry_TextChanged" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="kr."
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#5C6B73"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                    <BoxView
+                        HeightRequest="1"
+                        BackgroundColor="#C5BEB4" />
+
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="4">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Tip"
+                            FontSize="14"
+                            TextColor="#9EA7AD" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="TipLabel"
+                            Text="0,00 kr."
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#3D3A37" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Total"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#5C6B73" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="TotalLabel"
+                            Text="0,00 kr."
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#5C6B73" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border
+                BackgroundColor="#FFFFFF"
+                StrokeThickness="0"
+                Padding="22"
+                StrokeShape="RoundRectangle 20"
+                HorizontalOptions="Center"
+                MaximumWidthRequest="500">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Grid ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Text="TIP"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#9EA7AD"
+                            VerticalOptions="Center" />
+
+                        <Border
+                            Grid.Column="1"
+                            BackgroundColor="#C5BEB4"
+                            StrokeThickness="0"
+                            Padding="12,5"
+                            StrokeShape="RoundRectangle 12">
+
+                            <Label
+                                x:Name="TipPercentageLabel"
+                                Text="15%"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#3D3A37" />
+
+                        </Border>
+
+                    </Grid>
+
+                    <Slider
+                        x:Name="TipSlider"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="15"
+                        MinimumTrackColor="#5C6B73"
+                        MaximumTrackColor="#C5BEB4"
+                        ThumbColor="#3D3A37"
+                        ValueChanged="TipSlider_ValueChanged" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*,*,*"
+                        ColumnSpacing="7"
+                        Margin="0,2,0,0">
+
+                        <Button
+                            Grid.Column="0"
+                            Text="10%"
+                            FontSize="13"
+                            Padding="0"
+                            HeightRequest="42"
+                            CornerRadius="12"
+                            BackgroundColor="#C5BEB4"
+                            TextColor="#3D3A37"
+                            Clicked="Tip10Button_Clicked" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="25%"
+                            FontSize="13"
+                            Padding="0"
+                            HeightRequest="42"
+                            CornerRadius="12"
+                            BackgroundColor="#C5BEB4"
+                            TextColor="#3D3A37"
+                            Clicked="Tip25Button_Clicked" />
+
+                        <Button
+                            Grid.Column="2"
+                            Text="35%"
+                            FontSize="13"
+                            Padding="0"
+                            HeightRequest="42"
+                            CornerRadius="12"
+                            BackgroundColor="#C5BEB4"
+                            TextColor="#3D3A37"
+                            Clicked="Tip35Button_Clicked" />
+
+                        <Button
+                            Grid.Column="3"
+                            Text="50%"
+                            FontSize="13"
+                            Padding="0"
+                            HeightRequest="42"
+                            CornerRadius="12"
+                            BackgroundColor="#C5BEB4"
+                            TextColor="#3D3A37"
+                            Clicked="Tip50Button_Clicked" />
+
+                        <Button
+                            Grid.Column="4"
+                            Text="75%"
+                            FontSize="13"
+                            Padding="0"
+                            HeightRequest="42"
+                            CornerRadius="12"
+                            BackgroundColor="#C5BEB4"
+                            TextColor="#3D3A37"
+                            Clicked="Tip75Button_Clicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                MaximumWidthRequest="500"
+                HorizontalOptions="Center"
+                Margin="0,2,0,0">
 
                 <Button
-                    Text="10%"
-                    Clicked="Tip10Button_Clicked" />
+                    Grid.Column="0"
+                    Text="Round Down"
+                    HeightRequest="48"
+                    CornerRadius="14"
+                    BackgroundColor="#5C6B73"
+                    TextColor="#F4F1EA"
+                    FontAttributes="Bold"
+                    Clicked="RoundDownButton_Clicked" />
 
                 <Button
-                    Text="25%"
-                    Clicked="Tip25Button_Clicked" />
+                    Grid.Column="1"
+                    Text="Round Up"
+                    HeightRequest="48"
+                    CornerRadius="14"
+                    BackgroundColor="#5C6B73"
+                    TextColor="#F4F1EA"
+                    FontAttributes="Bold"
+                    Clicked="RoundUpButton_Clicked" />
 
-                <Button
-                    Text="35%"
-                    Clicked="Tip35Button_Clicked" />
-                
-                <Button
-                    Text="50%"
-                    Clicked="Tip50Button_Clicked" />
+            </Grid>
 
-                <Button
-                    Text="75%"
-                    Clicked="Tip75Button_Clicked" />    
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                MaximumWidthRequest="500"
+                HorizontalOptions="Center">
 
-            </HorizontalStackLayout>
+                <Border
+                    Grid.Column="0"
+                    BackgroundColor="#FFFFFF"
+                    StrokeThickness="0"
+                    Padding="14"
+                    StrokeShape="RoundRectangle 16">
 
-            <Label
-                Text="Tip:" />
+                    <VerticalStackLayout Spacing="5">
 
-            <Label
-                x:Name="TipLabel"
-                Text="0,00 kr."
-                FontSize="24" />
+                        <Label
+                            Text="ROUNDED DOWN"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="#9EA7AD" />
 
-            <Label
-                Text="Total:" />
+                        <Label
+                            x:Name="RoundDownLabel"
+                            Text="0,00 kr."
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="#3D3A37" />
 
-            <Label
-                x:Name="TotalLabel"
-                Text="0,00 kr."
-                FontSize="24" />
+                    </VerticalStackLayout>
 
-            <Button
-                Text="Round Down"
-                Clicked="RoundDownButton_Clicked" />
+                </Border>
 
-            <Label
-                x:Name="RoundDownLabel"
-                Text="0,00 kr."
-                FontSize="20" />
+                <Border
+                    Grid.Column="1"
+                    BackgroundColor="#FFFFFF"
+                    StrokeThickness="0"
+                    Padding="14"
+                    StrokeShape="RoundRectangle 16">
 
-            <Button
-                Text="Round Up"
-                Clicked="RoundUpButton_Clicked" />
+                    <VerticalStackLayout Spacing="5">
 
-            <Label
-                x:Name="RoundUpLabel"
-                Text="0,00 kr."
-                FontSize="20" />
+                        <Label
+                            Text="ROUNDED UP"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="#9EA7AD" />
+
+                        <Label
+                            x:Name="RoundUpLabel"
+                            Text="0,00 kr."
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="#3D3A37" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Grid>
 
         </VerticalStackLayout>
     </ScrollView>
