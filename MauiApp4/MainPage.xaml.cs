@@ -4,6 +4,8 @@ namespace MauiApp4
 {
     public partial class MainPage : ContentPage
     {
+        private static readonly CultureInfo _danishCulture = CultureInfo.CreateSpecificCulture("da-DK");
+
         public MainPage()
         {
             InitializeComponent();
@@ -21,29 +23,19 @@ namespace MauiApp4
             CalculateTip();
         }
 
-        private void Tip10Button_Clicked(object sender, EventArgs e)
+        private void TryUpdateLabels(double tip, double total)
         {
-            TipSlider.Value = 10;
+            TipLabel.Text = tip.ToString("C", _danishCulture);
+            TotalLabel.Text = total.ToString("C", _danishCulture);
+            RoundedLabel.Text = Math.Round(total, MidpointRounding.AwayFromZero).ToString("C", _danishCulture);
         }
 
-        private void Tip25Button_Clicked(object sender, EventArgs e)
+        private void TipButton_Clicked(object sender, EventArgs e)
         {
-            TipSlider.Value = 25;
-        }
-
-        private void Tip35Button_Clicked(object sender, EventArgs e)
-        {
-            TipSlider.Value = 35;
-        }
-
-        private void Tip50Button_Clicked(object sender, EventArgs e)
-        {
-            TipSlider.Value = 50;
-        }
-
-        private void Tip75Button_Clicked(object sender, EventArgs e)
-        {
-            TipSlider.Value = 75;
+            if (sender is Button button && double.TryParse(button.Text.Replace("%", ""), out double percentage))
+            {
+                TipSlider.Value = percentage;
+            }
         }
 
         private void CalculateTip()
@@ -54,49 +46,14 @@ namespace MauiApp4
                     CultureInfo.CurrentCulture,
                     out double amount))
             {
-                TipLabel.Text = 0.0.ToString(
-                    "C",
-                    CultureInfo.CreateSpecificCulture("da-DK"));
-
-                TotalLabel.Text = 0.0.ToString(
-                    "C",
-                    CultureInfo.CreateSpecificCulture("da-DK"));
-
+                TryUpdateLabels(0.0, 0.0);
                 return;
             }
 
             double tip = amount * (TipSlider.Value / 100);
             double total = amount + tip;
 
-            CultureInfo danishCulture =
-                CultureInfo.CreateSpecificCulture("da-DK");
-
-            TipLabel.Text = tip.ToString("C", danishCulture);
-            TotalLabel.Text = total.ToString("C", danishCulture);
-        }
-
-        private void RoundDownButton_Clicked(object sender, EventArgs e)
-        {
-            if (!TryCalculateTotal(out double total))
-                return;
-
-            double roundedDown = Math.Floor(total / 10) * 10;
-
-            RoundDownLabel.Text = roundedDown.ToString(
-                "C",
-                CultureInfo.CreateSpecificCulture("da-DK"));
-        }
-
-        private void RoundUpButton_Clicked(object sender, EventArgs e)
-        {
-            if (!TryCalculateTotal(out double total))
-                return;
-
-            double roundedUp = Math.Ceiling(total / 10) * 10;
-
-            RoundUpLabel.Text = roundedUp.ToString(
-                "C",
-                CultureInfo.CreateSpecificCulture("da-DK"));
+            TryUpdateLabels(tip, total);
         }
 
         private bool TryCalculateTotal(out double total)

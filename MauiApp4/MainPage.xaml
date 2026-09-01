@@ -61,8 +61,8 @@
 
                     <Grid
                         ColumnDefinitions="*,Auto"
-                        RowDefinitions="Auto,Auto"
-                        RowSpacing="4">
+                        RowDefinitions="auto,Auto,auto,auto"
+                        RowSpacing="5">
 
                         <Label
                             Grid.Row="0"
@@ -96,6 +96,24 @@
                             FontSize="22"
                             FontAttributes="Bold"
                             TextColor="#5C6B73" />
+                        
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Rounded"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#9EA7AD" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            x:Name="RoundedLabel"
+                            Text="0,00 kr."
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="#3D3A37" />
 
                     </Grid>
 
@@ -164,7 +182,7 @@
                             CornerRadius="12"
                             BackgroundColor="#C5BEB4"
                             TextColor="#3D3A37"
-                            Clicked="Tip10Button_Clicked" />
+                            Clicked="TipButton_Clicked" />
 
                         <Button
                             Grid.Column="1"
@@ -175,7 +193,7 @@
                             CornerRadius="12"
                             BackgroundColor="#C5BEB4"
                             TextColor="#3D3A37"
-                            Clicked="Tip25Button_Clicked" />
+                            Clicked="TipButton_Clicked" />
 
                         <Button
                             Grid.Column="2"
@@ -186,7 +204,7 @@
                             CornerRadius="12"
                             BackgroundColor="#C5BEB4"
                             TextColor="#3D3A37"
-                            Clicked="Tip35Button_Clicked" />
+                            Clicked="TipButton_Clicked" />
 
                         <Button
                             Grid.Column="3"
@@ -197,7 +215,7 @@
                             CornerRadius="12"
                             BackgroundColor="#C5BEB4"
                             TextColor="#3D3A37"
-                            Clicked="Tip50Button_Clicked" />
+                            Clicked="TipButton_Clicked" />
 
                         <Button
                             Grid.Column="4"
@@ -208,108 +226,10 @@
                             CornerRadius="12"
                             BackgroundColor="#C5BEB4"
                             TextColor="#3D3A37"
-                            Clicked="Tip75Button_Clicked" />
-
+                            Clicked="TipButton_Clicked" />
                     </Grid>
-
                 </VerticalStackLayout>
-
             </Border>
-
-            <Grid
-                ColumnDefinitions="*,*"
-                ColumnSpacing="10"
-                MaximumWidthRequest="500"
-                HorizontalOptions="Center"
-                Margin="0,2,0,0">
-
-                <Button
-                    Grid.Column="0"
-                    Text="Round Down"
-                    HeightRequest="48"
-                    CornerRadius="14"
-                    BackgroundColor="#5C6B73"
-                    TextColor="#F4F1EA"
-                    FontAttributes="Bold"
-                    Clicked="RoundDownButton_Clicked" />
-
-                <Button
-                    Grid.Column="1"
-                    Text="Round Up"
-                    HeightRequest="48"
-                    CornerRadius="14"
-                    BackgroundColor="#5C6B73"
-                    TextColor="#F4F1EA"
-                    FontAttributes="Bold"
-                    Clicked="RoundUpButton_Clicked" />
-
-            </Grid>
-
-            <Grid
-                ColumnDefinitions="*,*"
-                ColumnSpacing="10"
-                MaximumWidthRequest="500"
-                HorizontalOptions="Center">
-
-                <Border
-                    Grid.Column="0"
-                    BackgroundColor="#FFFFFF"
-                    StrokeThickness="0"
-                    Padding="14"
-                    StrokeShape="RoundRectangle 16">
-
-                    <VerticalStackLayout Spacing="5">
-
-                        <Label
-                            Text="ROUNDED DOWN"
-                            FontSize="10"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            TextColor="#9EA7AD" />
-
-                        <Label
-                            x:Name="RoundDownLabel"
-                            Text="0,00 kr."
-                            FontSize="19"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            TextColor="#3D3A37" />
-
-                    </VerticalStackLayout>
-
-                </Border>
-
-                <Border
-                    Grid.Column="1"
-                    BackgroundColor="#FFFFFF"
-                    StrokeThickness="0"
-                    Padding="14"
-                    StrokeShape="RoundRectangle 16">
-
-                    <VerticalStackLayout Spacing="5">
-
-                        <Label
-                            Text="ROUNDED UP"
-                            FontSize="10"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            TextColor="#9EA7AD" />
-
-                        <Label
-                            x:Name="RoundUpLabel"
-                            Text="0,00 kr."
-                            FontSize="19"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            TextColor="#3D3A37" />
-
-                    </VerticalStackLayout>
-
-                </Border>
-
-            </Grid>
-
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
