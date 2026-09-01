@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiApp4.MainPage"
+    Title="Tip Calculator">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20">
+
+            <Entry
+                x:Name="AmountEntry"
+                Placeholder="Enter Amount"
+                Keyboard="Numeric"
+                TextChanged="AmountEntry_TextChanged" />
+
+            <Label
+                Text="Tip Percentage:" />
+
+            <Slider
+                x:Name="TipSlider"
+                Minimum="0"
+                Maximum="100"
+                Value="15"
+                ValueChanged="TipSlider_ValueChanged" />
+
+            <Label
+                x:Name="TipPercentageLabel"
+                Text="15%"
+                HorizontalOptions="Center" />
+
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
+
+                <Button
+                    Text="10%"
+                    Clicked="Tip15Button_Clicked" />
+
+                <Button
+                    Text="25%"
+                    Clicked="Tip15Button_Clicked" />
+
+                <Button
+                    Text="35%"
+                    Clicked="Tip20Button_Clicked" />
+                
+                <Button
+                    Text="50%"
+                    Clicked="Tip15Button_Clicked" />
+
+                <Button
+                    Text="75%"
+                    Clicked="Tip20Button_Clicked" />    
+
+            </HorizontalStackLayout>
+
+            <Label
+                Text="Tip:" />
+
+            <Label
+                x:Name="TipLabel"
+                Text="0,00 kr."
+                FontSize="24" />
+
+            <Label
+                Text="Total:" />
+
+            <Label
+                x:Name="TotalLabel"
+                Text="0,00 kr."
+                FontSize="24" />
+
+            <Button
+                Text="Round Down"
+                Clicked="RoundDownButton_Clicked" />
+
+            <Label
+                x:Name="RoundDownLabel"
+                Text="0,00 kr."
+                FontSize="20" />
+
+            <Button
+                Text="Round Up"
+                Clicked="RoundUpButton_Clicked" />
+
+            <Label
+                x:Name="RoundUpLabel"
+                Text="0,00 kr."
+                FontSize="20" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
