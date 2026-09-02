@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiApp4.DetailsPage"
+    Title="Details"
+    BackgroundColor="#F4F1EA">
+
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="12">
+
+        <Label
+            x:Name="WelcomeLabel"
+            Text="Welcome"
+            FontSize="20"
+            FontAttributes="Bold"
+            TextColor="#000000" />
+
+        <Label
+            x:Name="PersonLabel"
+            Text="Here you can see details passed from the Feedback page."
+            FontSize="14"
+            TextColor="#000000" />
+
+        <Label
+            x:Name="ExtraInfoLabel"
+            Text="This demo shows how to pass simple data (like a name) using Shell query parameters. You can extend this to pass JSON-encoded objects."
+            FontSize="13"
+            TextColor="#000000" />
+
+        <Button
+            Text="Close"
+            Clicked="CloseButton_Clicked"
+            TextColor="#000000" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

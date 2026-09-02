@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiApp4.FeedbackPage"
+    Title="Feedback"
+    BackgroundColor="#F4F1EA">
+
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="12">
+
+        <Label
+            Text="Feedback"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="#3D3A37" />
+
+        <Label
+            Text="Please provide your feedback below. Use the Close button to return."
+            FontSize="14"
+            TextColor="#5C6B73" />
+
+        <Editor
+            x:Name="FeedbackEditor"
+            HeightRequest="120"
+            Placeholder="Write feedback..."
+            TextColor="#000000" />
+
+        <Entry
+            x:Name="NameEntry"
+            Placeholder="Your name"
+            FontSize="16"
+            TextColor="#000000" />
+
+        <HorizontalStackLayout Spacing="10">
+            <Button
+                Text="Details"
+                Clicked="DetailsButton_Clicked"
+                TextColor="#000000" />
+
+            <Button
+                Text="Close"
+                Clicked="CloseButton_Clicked"
+                TextColor="#000000" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>

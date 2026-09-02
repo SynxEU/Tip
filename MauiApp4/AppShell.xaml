@@ -4,11 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp4"
-    Title="MauiApp4">
+    Title="MauiApp4"
+    Shell.BackgroundColor="#F4F1EA"
+    FlyoutBackgroundColor="#F4F1EA"
+    ForegroundColor="Black">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Home" Icon="home.svg">
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="About" Icon="info.svg">
+        <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Feedback" Icon="feedback.svg">
+        <ShellContent Title="Feedback" ContentTemplate="{DataTemplate local:FeedbackPage}" />
+    </FlyoutItem>
 
 </Shell>

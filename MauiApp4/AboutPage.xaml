@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiApp4.AboutPage"
+    Title="About"
+    BackgroundColor="#F4F1EA">
+
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="12">
+
+        <Label
+            Text="About"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="#3D3A37" />
+
+        <Label
+            Text="TipCalculator 3 is a small MAUI demo app that shows amount, tip presets and currency display options. This About page explains app purpose and credits."
+            FontSize="14"
+            TextColor="#5C6B73" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
