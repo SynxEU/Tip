@@ -3,7 +3,9 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MauiApp4.Models"
     x:Class="MauiApp4.MainPage"
+    x:DataType="models:Tip"
     Title="Tip Calculator"
     BackgroundColor="#F4F1EA">
 
@@ -44,7 +46,8 @@
                             MaxLength="8"
                             TextColor="#3D3A37"
                             BackgroundColor="Transparent"
-                            TextChanged="AmountEntry_TextChanged" />
+                            TextChanged="AmountEntry_TextChanged"
+                            Text="{Binding BillAmount, Mode=TwoWay}" />
 
                         <Label
                             x:Name="CurrencySymbolLabel"
@@ -77,7 +80,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="TipLabel"
-                            Text="0,00 kr."
+                            Text="{Binding TipAmount}"
                             FontSize="18"
                             FontAttributes="Bold"
                             TextColor="#3D3A37" />
@@ -94,7 +97,7 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             x:Name="TotalLabel"
-                            Text="0,00 kr."
+                            Text="{Binding TotalAmount}"
                             FontSize="22"
                             FontAttributes="Bold"
                             TextColor="#5C6B73" />
@@ -112,7 +115,7 @@
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
                             x:Name="RoundedLabel"
-                            Text="0,00 kr."
+                            Text="{Binding RoundedAmount}"
                             FontSize="19"
                             FontAttributes="Bold"
                             TextColor="#3D3A37" />
@@ -152,7 +155,7 @@
 
                             <Label
                                 x:Name="TipPercentageLabel"
-                                Text="15%"
+                                Text="{Binding TipPct, StringFormat='{}{0:0}%'}"
                                 FontSize="16"
                                 FontAttributes="Bold"
                                 TextColor="#3D3A37" />
@@ -165,11 +168,11 @@
                         x:Name="TipSlider"
                         Minimum="0"
                         Maximum="100"
-                        Value="15"
                         MinimumTrackColor="#5C6B73"
                         MaximumTrackColor="#C5BEB4"
                         ThumbColor="#3D3A37"
-                        ValueChanged="TipSlider_ValueChanged" />
+                        ValueChanged="TipSlider_ValueChanged"
+                        Value="{Binding TipPct, Mode=TwoWay}" />
 
                     <Grid
                         ColumnDefinitions="*,*,*"
