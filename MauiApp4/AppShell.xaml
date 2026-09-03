@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:MauiApp4"
     Title="MauiApp4"
     Shell.BackgroundColor="#F4F1EA"
-    FlyoutBackgroundColor="#F4F1EA"
-    ForegroundColor="Black">
-
+    Shell.ForegroundColor="Black"
+    FlyoutBackgroundColor="#F4F1EA">
+    
     <FlyoutItem Title="Home" Icon="home.svg">
         <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
@@ -19,6 +19,14 @@
 
     <FlyoutItem Title="Feedback" Icon="feedback.svg">
         <ShellContent Title="Feedback" ContentTemplate="{DataTemplate local:FeedbackPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Restaurants" Icon="restaurant.svg">
+        <ShellContent Title="Restaurants" ContentTemplate="{DataTemplate local:RestaurantsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="cog.svg">
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>
 
 </Shell>

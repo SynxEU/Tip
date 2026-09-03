@@ -26,12 +26,6 @@
             FontSize="14"
             TextColor="#000000" />
 
-        <Label
-            x:Name="ExtraInfoLabel"
-            Text="This demo shows how to pass simple data (like a name) using Shell query parameters. You can extend this to pass JSON-encoded objects."
-            FontSize="13"
-            TextColor="#000000" />
-
         <Button
             Text="Close"
             Clicked="CloseButton_Clicked"

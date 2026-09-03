@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.SettingsPage"
+             Title="Settings"
+             BackgroundColor="#F4F1EA">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+        <Label Text="Tip Calculator Settings" FontAttributes="Bold" FontSize="20" TextColor="Black" />
+
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+            <Label Text="Default Tip (%):" VerticalOptions="Center" TextColor="Black" />
+            <Entry x:Name="TipEntry" Keyboard="Numeric" WidthRequest="100" TextColor="Black" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+            <Label Text="Use default 15%" VerticalOptions="Center" TextColor="Black" />
+            <Switch x:Name="Default15Switch" Toggled="Default15Switch_Toggled" />
+        </HorizontalStackLayout>
+
+        <Button Text="Save" Clicked="SaveButton_Clicked" TextColor="White" />
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:MauiApp4.Converters"
+    x:Class="MauiApp4.RestaurantsPage"
+    Title="Restaurants"
+    BackgroundColor="#F4F1EA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:StarsConverter x:Key="StarsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
+        <Label Text="Restaurants" FontSize="20" FontAttributes="Bold" TextColor="#000000" />
+
+        <CollectionView x:Name="RestaurantsView" ItemsSource="{Binding Restaurants}" SelectionMode="Single" HeightRequest="500" SelectionChanged="RestaurantsView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Delete" BackgroundColor="Red" Invoked="DeleteSwipeItem_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame Padding="8" Margin="4" CornerRadius="10" BackgroundColor="#FFFFFF">
+                            <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                                <Image Source="{Binding ImageUrl}" WidthRequest="60" HeightRequest="60" Aspect="AspectFill" />
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" TextColor="#3D3A37" />
+                                    <Label Text="{Binding TipPct, StringFormat='Tip: {0:0}%'}" FontSize="14" TextColor="#5C6B73" />
+                                    <Label Text="{Binding Rating, Converter={StaticResource StarsConverter}}" FontSize="18" TextColor="#F2B01E" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

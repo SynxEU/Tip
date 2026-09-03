@@ -14,6 +14,12 @@ public partial class MainPage : ContentPage
         BindingContext = Tip;
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        Tip.TipPct = Settings.GetDefaultTipPct();
+    }
+
     private void AmountEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
         Tip.BillAmount = AmountEntry.Text ?? string.Empty;
