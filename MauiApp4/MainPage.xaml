@@ -47,7 +47,7 @@
                             TextColor="#3D3A37"
                             BackgroundColor="Transparent"
                             TextChanged="AmountEntry_TextChanged"
-                            Text="{Binding BillAmount, Mode=TwoWay}" />
+                            Text="{Binding BillAmount, Mode=TwoWay, Converter={StaticResource NormalizeBillConverter}}" />
 
                         <Label
                             x:Name="CurrencySymbolLabel"
@@ -80,10 +80,10 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="TipLabel"
-                            Text="{Binding TipAmount}"
+                            Text="{Binding TipAmount, Converter={StaticResource CurrencyFormatConverter}}"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="#3D3A37" />
+                            TextColor="{Binding TipPct, Converter={StaticResource TipPctToColorConverter}}" />
 
                         <Label
                             Grid.Row="1"
@@ -97,7 +97,7 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             x:Name="TotalLabel"
-                            Text="{Binding TotalAmount}"
+                            Text="{Binding TotalAmount, Converter={StaticResource CurrencyFormatConverter}}"
                             FontSize="22"
                             FontAttributes="Bold"
                             TextColor="#5C6B73" />
@@ -115,10 +115,11 @@
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
                             x:Name="RoundedLabel"
-                            Text="{Binding RoundedAmount}"
+                            Text="{Binding RoundedAmount, Converter={StaticResource CurrencyFormatConverter}}"
                             FontSize="19"
                             FontAttributes="Bold"
-                            TextColor="#3D3A37" />
+                            TextColor="#3D3A37"
+                            IsVisible="{Binding RoundedAmount, Converter={StaticResource ZeroToVisibilityConverter}}" />
 
                     </Grid>
 

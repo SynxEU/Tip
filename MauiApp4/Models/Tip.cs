@@ -93,6 +93,13 @@ namespace MauiApp4.Models
                 return;
             }
 
+            if (amount < 0)
+            {
+                amount = 0;
+                _billAmount = amount.ToString("G", _culture);
+                OnPropertyChanged(nameof(BillAmount));
+            }
+
             if (amount > Max)
             {
                 amount = Max;

@@ -1,5 +1,8 @@
 ﻿using System.Globalization;
+using System.ComponentModel;
 using MauiApp4.Models;
+using MauiApp4.Converters;
+using Microsoft.Maui.Graphics;
 
 namespace MauiApp4;
 
@@ -12,12 +15,58 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         Tip = new Tip();
         BindingContext = Tip;
+        Tip.PropertyChanged += Tip_PropertyChanged;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
         Tip.TipPct = Settings.GetDefaultTipPct();
+    }
+
+    private void Tip_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(Tip.TipPct))
+        {
+            AnimateTipColor(Tip.TipPct);
+        }
+    }
+
+    private void AnimateTipColor(double newPct)
+    {
+        try
+        {
+            var conv = new TipPctToColorConverter();
+            var toColor = (Color)conv.Convert(newPct, typeof(Color), null, CultureInfo.CurrentCulture);
+
+            var fromColor = TipPercentageLabel.TextColor;
+
+            var animation = new Microsoft.Maui.Controls.Animation(v =>
+            {
+                var blended = BlendColors(fromColor, toColor, v);
+                TipPercentageLabel.TextColor = blended;
+                TipSlider.MinimumTrackColor = blended;
+            }, 0, 1);
+
+            // Commit animation: owner, name, rate (ms per frame), length (ms), easing
+            animation.Commit(this, "TipColorChange", 16u, 250u, Microsoft.Maui.Easing.Linear);
+        }
+        catch
+        {
+            // fallback: set color directly
+            var conv = new TipPctToColorConverter();
+            TipPercentageLabel.TextColor = (Color)conv.Convert(newPct, typeof(Color), null, CultureInfo.CurrentCulture);
+        }
+    }
+
+    private Color BlendColors(Color a, Color b, double t)
+    {
+        float f = (float)Math.Clamp(t, 0.0, 1.0);
+        return new Color(
+            a.Red + (b.Red - a.Red) * f,
+            a.Green + (b.Green - a.Green) * f,
+            a.Blue + (b.Blue - a.Blue) * f,
+            a.Alpha + (b.Alpha - a.Alpha) * f);
     }
 
     private void AmountEntry_TextChanged(object sender, TextChangedEventArgs e)
